@@ -192,9 +192,6 @@ if ($rezultat->num_rows == 0) {
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
-                    </div>
                 </div>
 
 

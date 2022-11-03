@@ -20,6 +20,25 @@ $('#dodajForm').submit(function(event){
 }
 )
 
+$('#btn-obrisi').click(function(){
+    const checked = $('input[name=cekiran]:checked');
+
+    req = $.ajax({
+        url: "handler/delete.php",
+        type: "post",
+        data: {'id': checked.val()}
+    });
+    
+    req.done(function(){
+        location.reload();
+});
+
+    req.fail(function(jqXHR, textStatus, errorThrown){
+        console.error("Greska je: "+textStatus, errorThrown);
+    });
+}
+)
+
 $('#izmijeniForm').submit(function(){
 
     const izmjenaID = $('input[name=cekiran]:checked');
@@ -33,25 +52,6 @@ $('#izmijeniForm').submit(function(){
     req.done(function(){
             location.reload();
     });
-
-    req.fail(function(jqXHR, textStatus, errorThrown){
-        console.error("Greska je: "+textStatus, errorThrown);
-    });
-}
-)
-
-$('#btn-obrisi').click(function(){
-    const checked = $('input[name=cekiran]:checked');
-
-    req = $.ajax({
-        url: "handler/delete.php",
-        type: "post",
-        data: {'id': checked.val()}
-    });
-    
-    req.done(function(){
-        location.reload();
-});
 
     req.fail(function(jqXHR, textStatus, errorThrown){
         console.error("Greska je: "+textStatus, errorThrown);
