@@ -55,7 +55,7 @@ if ($rezultat->num_rows == 0) {
     <div id="pregled" class="panel panel-success" style="margin-top: 1%;">
 
         <div class="panel-body">
-            <table id="myTable" class="table sortable table-hover table-striped" style="color: black; background-color: grey;">
+            <table id="myTable" class="table sortable table-hover table-striped" style="color: black; background-color: grey; margin-bottom: 0px;">
                 <thead class="thead">
                     <tr>
                         <th scope="col">Proizvod</th>
