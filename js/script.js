@@ -150,20 +150,46 @@ function sortTable(){
 
 $('#btn-pronadji').click(function(){
 
-    const serijalizovan = $form.serialize();
+    let idVal = $("#pronadji");
+    let id = idVal.val();
+    let row = $(`#tr-${val} td`);
+
+    event.preventDefault();
 
     req = $.ajax({
-        url: "handler/find.php",
+        url: "handler/get.php",
         type: "post",
-        data: serijalizovan
+        data: {'id': id}
     });
 
-    req.done(function(){
-        location.reload();
+    req.done(function(response){
+        if (!(response === "Failed")) {
+            showData(row)
+        }
     });
 
-    req.fail(function(jqXHR, textStatus, errorThrown){
+    req.fail(function(textStatus, errorThrown){
         console.error("Greska je: "+textStatus, errorThrown);
     });
 }
 )
+
+function showData(row) {
+    $('#tableBody').empty()
+
+    $("#myTable tbody").append(`
+        <tr id="tr-${row[0].outerText}">
+            <td>${row[1].outerText}</td>
+            <td>${row[2].outerText}</td>
+            <td>${row[3].outerText}</td>
+            <td>${row[4].outerText}</td>
+            <td>${row[5].outerText}</td>
+            <td>
+                <label class="custom-radio-btn">
+                    <input type="radio" name="cekiran" value=${row[0].outerText}>
+                    <span class="checkmark"></span>
+                </label>
+            </td>
+        </tr>
+    `);
+}
