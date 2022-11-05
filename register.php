@@ -38,7 +38,7 @@ if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && isset($_POST['na
     <div class="register-form">
         <div class="main-div">
             <form method="POST" action="#">
-                <h1>ULOGUJ SE</h1>
+                <h1>REGISTRUJ SE</h1>
                 <div class="imgcontainer">
                     <img src="img/military.png" id="military">
                 </div>
@@ -55,7 +55,7 @@ if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && isset($_POST['na
                     <br>
                     <input type="text" placeholder="Phone" name="phoneR" class="form-control" required>
                     <br>
-                    <button class="btn btn-success" name="submit" type="sumbit">Prijavi se</button>
+                    <button class="btn btn-success" name="submit" type="sumbit">Registruj se</button>
                 </div>
             </form>
         </div>
