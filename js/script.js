@@ -150,7 +150,7 @@ function sortTable(){
 
 $('#btn-pronadji').click(function(){
 
-    let idVal = $("#pronadji");
+    let idVal = $('input[name=pronadji]');
     let id = idVal.val();
     let row = $(`#tr-${val} td`);
 
@@ -178,12 +178,12 @@ function showData(row) {
     $('#tableBody').empty()
 
     $("#myTable tbody").append(`
-        <tr id="tr-${row[0].outerText}">
+        <tr id="tr-${id}">
+            <td>${row[0].outerText}</td>
             <td>${row[1].outerText}</td>
             <td>${row[2].outerText}</td>
             <td>${row[3].outerText}</td>
             <td>${row[4].outerText}</td>
-            <td>${row[5].outerText}</td>
             <td>
                 <label class="custom-radio-btn">
                     <input type="radio" name="cekiran" value=${row[0].outerText}>
