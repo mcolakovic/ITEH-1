@@ -195,11 +195,9 @@ if ($rezultat->num_rows == 0) {
                 </div>
             </div>
 
-
-
         </div>
-
     </div>
+    <a href="logout.php" class="label label-danger" style="font-size:16px; background-color: red; position: fixed; bottom:0; right:0; float:right">Logout</a>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
