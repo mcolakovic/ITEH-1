@@ -27,7 +27,9 @@ if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && isset($_POST['na
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/register.css">
     <title>MILITARYSHOP - Register</title>
 
 </head>
@@ -36,33 +38,27 @@ if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && isset($_POST['na
     <div class="register-form">
         <div class="main-div">
             <form method="POST" action="#">
-                <div class="container">
-                    <label class="username">Korisnik</label>
-                    <input type="text" name="usernameR" class="form-control" required>
-                    <br>
-                    <label for="password">Lozinka</label>
-                    <input type="password" name="passwordR" class="form-control" required>
-                    <br>
-                    <label class="name">Ime</label>
-                    <input type="text" name="nameR" class="form-control" required>
-                    <br>
-                    <label class="surname">Prezime</label>
-                    <input type="text" name="surnameR" class="form-control" required>
-                    <br>
-                    <label class="email">Email</label>
-                    <input type="text" name="emailR" class="form-control" required>
-                    <br>
-                    <label class="phone">Telefon</label>
-                    <input type="text" name="phoneR" class="form-control" required>
-                    <br>
-                    <button type="submit" class="btn btn-primary" name="submit">Registruj se</button>
+                <h1>ULOGUJ SE</h1>
+                <div class="imgcontainer">
+                    <img src="img/military.png" id="military">
                 </div>
-
+                <div class="container">
+                    <input type="text" placeholder="Username" name="usernameR" class="form-control" required>
+                    <br>
+                    <input type="password" placeholder="Password" name="passwordR" class="form-control" required>
+                    <br>
+                    <input type="text" placeholder="Name" name="nameR" class="form-control" required>
+                    <br>
+                    <input type="text" placeholder="Surname" name="surnameR" class="form-control" required>
+                    <br>
+                    <input type="text" placeholder="Email" name="emailR" class="form-control" required>
+                    <br>
+                    <input type="text" placeholder="Phone" name="phoneR" class="form-control" required>
+                    <br>
+                    <button class="btn btn-success" name="submit" type="sumbit">Prijavi se</button>
+                </div>
             </form>
         </div>
-
-
-    </div>
 </body>
 
 </html>
