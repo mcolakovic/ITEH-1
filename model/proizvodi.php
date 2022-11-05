@@ -25,16 +25,17 @@ class Proizvodi
         return $conn->query($query);
     }
 
-    public static function getByProizvod($proizvodQ, mysqli $conn)
+    public static function getById($id, mysqli $conn)
     {
-        $query = "SELECT * FROM proizvodi WHERE proizvod=$proizvodQ";
-        $proizvodi = array();
-        if ($upit = $conn->query($query)) {
-            while ($red = $upit->fetch_array(1)) {
-                $proizvodi[] = $red;
+        $query = "SELECT * FROM proizvodi WHERE id=$id";
+        $array = array();
+        if ($result = $conn->query($query)) {
+
+            while ($row = $result->fetch_array(1)) {
+                $array[] = $row;
             }
         }
-        return $proizvodi;
+        return $array;
     }
 
     public function deleteById(mysqli $conn)
@@ -43,9 +44,9 @@ class Proizvodi
         return $conn->query($query);
     }
 
-    public static function updateById($proizvodQ, mysqli $conn)
+    public static function update($idU, $proizvodU, $proizvodjacU, $velicinaU, $materijalU, $bojaU,  mysqli $conn)
     {
-        $query = "UPDATE proizvodi SET proizvod='$proizvodQ->proizvod', prozivodjac='$proizvodQ->prozivodjac', velicina='$proizvodQ->velicina',materijal='$proizvodQ->materijal',boja='$proizvodQ->boja' WHERE id='$proizvodQ->id'";
+        $query = "UPDATE proizvodi SET proizvod='$proizvodU', prozivodjac='$proizvodjacU', velicina='$velicinaU',materijal='$materijalU',boja='$bojaU' WHERE id='$idU'";
         return $conn->query($query);
     }
 

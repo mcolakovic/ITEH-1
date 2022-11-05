@@ -14,7 +14,7 @@ $('#dodajForm').submit(function(event){
             location.reload();
     });
 
-    req.fail(function(jqXHR, textStatus, errorThrown){
+    req.fail(function(textStatus, errorThrown){
         console.error("Greska je: "+textStatus, errorThrown);
     });
 }
@@ -33,7 +33,7 @@ $('#btn-obrisi').click(function(){
         location.reload();
 });
 
-    req.fail(function(jqXHR, textStatus, errorThrown){
+    req.fail(function(textStatus, errorThrown){
         console.error("Greska je: "+textStatus, errorThrown);
     });
 }
@@ -41,23 +41,80 @@ $('#btn-obrisi').click(function(){
 
 $('#izmijeniForm').submit(function(){
 
-    const izmjenaID = $('input[name=cekiran]:checked');
+    event.preventDefault();
+    const forma = $(this);
+    const serialized = forma.serialize();
+
+
+    const obj = forma.serializeArray().reduce(function (json, { name, value }) {
+        json[name] = value;
+        return json;
+    }, {}
+    );
 
     req = $.ajax({
         url: "handler/update.php",
         type: "post",
-        data: {'idIzmijeni': izmjenaID.val()}
+        data: serialized
     });
 
-    req.done(function(){
-            location.reload();
+    req.done(function(response){
+        if (response === "Success") {
+            $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(0).html(obj["proizvod"]);
+            $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(1).html(obj["proizvodjac"]);
+            $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(2).html(obj["velicina"]);
+            $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(3).html(obj["materijal"]);
+            $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(4).html(obj["boja"]);
+            alert("Proizvod je izmijenjen");    
+        }
+        else{
+            alert("Proizvod nije izmijenjen");
+        }
     });
 
-    req.fail(function(jqXHR, textStatus, errorThrown){
+    req.fail(function(textStatus, errorThrown){
         console.error("Greska je: "+textStatus, errorThrown);
     });
 }
 )
+
+function postaviPodatke() {
+    var idVal = $('input[name=cekiran]:checked');
+    var id = idVal.val();
+    
+    $("#id").val(id);
+
+    event.preventDefault();
+
+
+    request = $.ajax({
+        url: "handler/get.php",
+        type: "post",
+        data: {'id': id}
+    });
+
+    request.done(function (response) {
+        if (!(response === "Failed")) {
+
+            response = response.slice(1, -1)
+            var obj = JSON.parse(response)
+
+            $('#izmijeniForm #proizvod').val(obj['proizvod'])
+
+            $('#izmijeniForm #proizvodjac').val(obj['proizvodjac'])
+
+            $('#izmijeniForm #velicina').val(obj['velicina'])
+
+            $('#izmijeniForm #materijal').val(obj['materijal'])
+
+            $('#izmijeniForm #boja').val(obj['boja'])
+        } 
+    })
+
+    request.fail(function (textStatus, errorThrown) {
+        console.error("Greska je: "+textStatus, errorThrown);
+    })
+}
 
 $('#btn-pronadji').click(function(){
 
