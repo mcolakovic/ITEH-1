@@ -46,7 +46,7 @@ if ($rezultat->num_rows == 0) {
     <div class="row">
         <nav class="navbar navbar-light bg-light" style="float:right ;">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" name="pronadji" type="search" placeholder="Pronadji *" aria-label="Search">
+                <input class="form-control mr-sm-2" id="pronadji" name="pronadji" type="search" placeholder="Pronadji *" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" id="btn-pronadji" type="submit">Pronadji</button>
             </form>
         </nav>
@@ -66,7 +66,7 @@ if ($rezultat->num_rows == 0) {
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tableBody">
                     <?php
                     while ($red = $rezultat->fetch_array()) {
                     ?>

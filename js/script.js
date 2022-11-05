@@ -116,6 +116,38 @@ function postaviPodatke() {
     })
 }
 
+function sortTable(){
+
+    $('#myTable #tableBody').empty();
+    $('#pronadji').val("");
+
+    $.get("handler/sort.php", function (data) {
+        let array = data.split("}")
+        array.pop()
+        array.forEach(element => {
+            element = element + "}"
+            let obj = JSON.parse(element)
+
+            $("#myTable tbody").append(`
+            <tr id="tr-${obj.id}">
+                <td>${obj.proizvod}</td>
+                <td>${obj.proizvodjac}</td>
+                <td>${obj.velicina}</td>
+                <td>${obj.materijal}</td>
+                <td>${obj.boja}</td>
+                <td>
+                    <label class="custom-radio-btn">
+                        <input type="radio" name="cekiran" value=${data}>
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+            </tr>
+        `)
+
+        });
+    })
+}
+
 $('#btn-pronadji').click(function(){
 
     const serijalizovan = $form.serialize();

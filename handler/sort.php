@@ -3,8 +3,12 @@
 require "../dbBroker.php";
 require "../model/proizvodi.php";
 
-$rezultat = Proizvodi::getAll($conn);
+$rezultat = Proizvodi::sort($conn);
 
 if (!$rezultat->num_rows == 0) {
-    $status = Proizvodi::sort($conn);
+    while ($red = $rezultat->fetch_array()) {
+        echo json_encode($red);
+    }
+} else {
+    echo "Failed";
 }
