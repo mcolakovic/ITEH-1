@@ -152,7 +152,7 @@ $('#btn-pronadji').click(function(){
 
     let idVal = $('input[name=pronadji]');
     let id = idVal.val();
-    let row = $(`#tr-${val} td`);
+    let row = $(`#tr-${id} td`);
 
     event.preventDefault();
 
@@ -164,7 +164,7 @@ $('#btn-pronadji').click(function(){
 
     req.done(function(response){
         if (!(response === "Failed")) {
-            showData(row)
+            showData(id,row)
         }
     });
 
@@ -174,7 +174,7 @@ $('#btn-pronadji').click(function(){
 }
 )
 
-function showData(row) {
+function showData(id, row) {
     $('#tableBody').empty()
 
     $("#myTable tbody").append(`
