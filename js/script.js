@@ -165,6 +165,12 @@ $('#btn-pronadji').click(function(){
     req.done(function(response){
         if (!(response === "Failed")) {
             showData(id,row)
+            $('input[name=pronadji]').val("")
+            document.getElementById("btn-pronadji").innerHTML = "Prikazi sve";
+        }
+        else{
+            showAll()
+            document.getElementById("btn-pronadji").innerHTML = "Pronadji";
         }
     });
 
@@ -192,4 +198,35 @@ function showData(id, row) {
             </td>
         </tr>
     `);
+}
+
+function showAll() {
+    $('#tableBody').empty()
+    $('#pronadji').val("")
+
+    $.get("handler/getAll.php", function (data) {
+        let array = data.split("}")
+        array.pop()
+        array.forEach(element => {
+            element = element + "}"
+            let obj = JSON.parse(element)
+
+            $("#myTable tbody").append(`
+            <tr id="tr-${obj.id}">
+                <td>${obj.proizvod}</td>
+                <td>${obj.proizvodjac}</td>
+                <td>${obj.velicina}</td>
+                <td>${obj.materijal}</td>
+                <td>${obj.boja}</td>
+                <td>
+                    <label class="custom-radio-btn">
+                        <input type="radio" name="cekiran" value=${data}>
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+            </tr>
+        `)
+
+        });
+    })
 }
