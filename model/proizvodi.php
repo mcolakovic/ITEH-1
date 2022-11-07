@@ -46,7 +46,7 @@ class Proizvodi
 
     public static function update($idU, $proizvodU, $proizvodjacU, $velicinaU, $materijalU, $bojaU,  mysqli $conn)
     {
-        $query = "UPDATE proizvodi SET proizvod='$proizvodU', prozivodjac='$proizvodjacU', velicina='$velicinaU',materijal='$materijalU',boja='$bojaU' WHERE id='$idU'";
+        $query = "UPDATE proizvodi SET proizvod='$proizvodU', proizvodjac='$proizvodjacU', velicina='$velicinaU',materijal='$materijalU',boja='$bojaU' WHERE id='$idU'";
         return $conn->query($query);
     }
 
