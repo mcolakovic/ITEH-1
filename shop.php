@@ -4,7 +4,7 @@ require 'dbBroker.php';
 require 'model/proizvodi.php';
 
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user_admin'])) {
     header('Location: index.php');
     exit();
 }
@@ -19,8 +19,6 @@ if ($rezultat->num_rows == 0) {
     echo "Nema proizvoda!";
     die();
 }
-
-
 ?>
 
 <!DOCTYPE html>
