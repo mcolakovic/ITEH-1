@@ -10,9 +10,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $odg = User::logInUser($userL, $passL, $conn);
     if ($odg->num_rows == 1) {
-        $_SESSION['user'] = $userL;
-        header('Location: shop.php');
-        exit();
+        if ($userL == "admin") {
+            $_SESSION['user_admin'] = $userL;
+            header('Location: shop.php');
+            exit();
+        } else {
+            $_SESSION['user_all'] = $userL;
+            header('Location: cart.php');
+            exit();
+        }
     }
 }
 
