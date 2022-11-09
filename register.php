@@ -17,6 +17,8 @@ if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && isset($_POST['na
     if ($odg) {
         header('Location: login.php');
         exit();
+    } else {
+        echo "<script>alert('Korisnicko ime je vec zauzeto');</script>";
     }
 }
 
