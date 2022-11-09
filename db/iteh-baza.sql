@@ -7,12 +7,13 @@ USE `iteh-baza`;
 
 DROP TABLE IF EXISTS `proizvodi`;
 CREATE TABLE `proizvodi` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `proizvod` varchar(50) NOT NULL,
   `proizvodjac` varchar(50) NOT NULL,
-  `velicina` varchar(50) NOT NULL,
+  `velicina` varchar(50),
   `materijal` varchar(50) NOT NULL,
-  `boja` varchar(50) NOT NULL
+  `boja` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `proizvodi` (`id`, `proizvod`, `proizvodjac`, `velicina`, `materijal`, `boja`) VALUES
@@ -31,22 +32,23 @@ INSERT INTO `proizvodi` (`id`, `proizvod`, `proizvodjac`, `velicina`, `materijal
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `password` varchar(50) NOT NULL
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` (`username`, `name`, `surname`, `email`, `phone`, `password`) VALUES
-('Chola', 'Matija', 'Colakovic', 'matija.colo@gmail.com', '0665741025', 'kolo4life');
+('Chola', 'Matija', 'Colakovic', 'matija.colo@gmail.com', '0665741025', 'kolo4life'),
+('admin', null, null, null, null, 'pass');
 
-ALTER TABLE `proizvodi`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`username`);
-
-ALTER TABLE `proizvodi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+DROP TABLE IF EXISTS `korpa`;
+CREATE TABLE `korpa` (
+  `usernameK` varchar(50) NOT NULL references `user`(`username`),
+  `idK` int(11) NOT NULL references `proizvodi`(`id`),
+  `kolicina` int(11) NOT NULL,
+  PRIMARY KEY(`usernameK`, `idK`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 COMMIT;
