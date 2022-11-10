@@ -119,6 +119,9 @@ if ($rezultat->num_rows == 0) {
                             <h3 style="color: black; text-align: center">Dodaj proizvod</h3>
                             <div class="row">
                                 <div class="col-md-11 ">
+                                    <div class="form-group" style="display: none;">
+                                        <input id="username" type="text" name="username" class="form-control" value="<?php echo $_SESSION['user_admin'] ?>" readonly />
+                                    </div>
                                     <div class="form-group">
                                         <label for="">Proizvod</label>
                                         <input type="text" style="border: 1px solid black" name="proizvod" class="form-control" />
@@ -164,6 +167,9 @@ if ($rezultat->num_rows == 0) {
                             <h3 style="color: black">Izmijeni proizvod</h3>
                             <div class="row">
                                 <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input id="username" type="text" name="username" class="form-control" value="<?php echo $_SESSION['user_admin'] ?>" readonly />
+                                    </div>
                                     <div class="form-group">
                                         <input id="id" type="text" name="id" class="form-control" placeholder="Id *" value="" readonly />
                                     </div>

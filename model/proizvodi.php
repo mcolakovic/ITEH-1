@@ -46,15 +46,15 @@ class Proizvodi
         return $conn->query($query);
     }
 
-    public static function update($idU, $proizvodU, $proizvodjacU, $velicinaU, $materijalU, $bojaU,  mysqli $conn)
+    public static function update($idU, $proizvodU, $proizvodjacU, $velicinaU, $materijalU, $bojaU, $usernameU, mysqli $conn)
     {
-        $query = "UPDATE proizvodi SET proizvod='$proizvodU', proizvodjac='$proizvodjacU', velicina='$velicinaU',materijal='$materijalU',boja='$bojaU' WHERE id='$idU'";
+        $query = "UPDATE proizvodi SET proizvod='$proizvodU', proizvodjac='$proizvodjacU', velicina='$velicinaU',materijal='$materijalU',boja='$bojaU',username='$usernameU' WHERE id='$idU'";
         return $conn->query($query);
     }
 
     public static function add(Proizvodi $proizvodQ, mysqli $conn)
     {
-        $query = "INSERT INTO proizvodi (proizvod, proizvodjac, velicina, materijal, boja) VALUES ('$proizvodQ->proizvod', '$proizvodQ->proizvodjac', '$proizvodQ->velicina', '$proizvodQ->materijal', '$proizvodQ->boja')";
+        $query = "INSERT INTO proizvodi (proizvod, proizvodjac, velicina, materijal, boja, username) VALUES ('$proizvodQ->proizvod', '$proizvodQ->proizvodjac', '$proizvodQ->velicina', '$proizvodQ->materijal', '$proizvodQ->boja', '$proizvodQ->username')";
         return $conn->query($query);
     }
 
