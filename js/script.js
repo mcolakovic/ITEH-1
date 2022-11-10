@@ -40,7 +40,7 @@ $('#btn-obrisi').click(function(){
 )
 
 $('#izmijeniForm').submit(function(){
-
+    
     event.preventDefault();
     const forma = $(this);
     const serialized = forma.serialize();
@@ -65,6 +65,7 @@ $('#izmijeniForm').submit(function(){
             $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(2).html(obj["velicina"]);
             $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(3).html(obj["materijal"]);
             $(`#myTable tbody #tr-${obj["id"]}`).find("td").eq(4).html(obj["boja"]);
+            //location.reload();
             alert("Proizvod je izmijenjen");    
         }
         else{

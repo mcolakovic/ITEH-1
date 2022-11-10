@@ -8,8 +8,9 @@ class Proizvodi
     public $velicina;
     public $materijal;
     public $boja;
+    public $username;
 
-    public function __construct($id = null, $proizvod = null, $proizvodjac = null, $velicina = null, $materijal = null, $boja = null)
+    public function __construct($id = null, $proizvod = null, $proizvodjac = null, $velicina = null, $materijal = null, $boja = null, $username = null)
     {
         $this->id = $id;
         $this->proizvod = $proizvod;
@@ -17,6 +18,7 @@ class Proizvodi
         $this->velicina = $velicina;
         $this->materijal = $materijal;
         $this->boja = $boja;
+        $this->username = $username;
     }
 
     public static function getAll($conn)
