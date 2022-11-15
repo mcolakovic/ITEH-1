@@ -138,13 +138,12 @@ function sortTable(){
                 <td>${obj.boja}</td>
                 <td>
                     <label class="custom-radio-btn">
-                        <input type="radio" name="cekiran" value=${data}>
+                        <input type="radio" name="cekiran" value=${obj.id}>
                         <span class="checkmark"></span>
                     </label>
                 </td>
             </tr>
         `)
-
         });
     })
 }
@@ -193,7 +192,7 @@ function showData(id, row) {
             <td>${row[4].outerText}</td>
             <td>
                 <label class="custom-radio-btn">
-                    <input type="radio" name="cekiran" value=${row[0].outerText}>
+                    <input type="radio" name="cekiran" value=${id}>
                     <span class="checkmark"></span>
                 </label>
             </td>
