@@ -226,7 +226,6 @@ function showAll() {
                 </td>
             </tr>
         `)
-
         });
     })
 }
