@@ -220,7 +220,7 @@ function showAll() {
                 <td>${obj.boja}</td>
                 <td>
                     <label class="custom-radio-btn">
-                        <input type="radio" name="cekiran" value=${data}>
+                        <input type="radio" name="cekiran" value=${obj.id}>
                         <span class="checkmark"></span>
                     </label>
                 </td>
